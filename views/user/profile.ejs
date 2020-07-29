@@ -115,7 +115,7 @@
                                     <input type="hidden" name="id" value="<%= user._id %>">
                                     <div class="form-group">
                                         <label for="name">Name:</label>
-                                        <input type="text" class="form-control" id="name" value=" <%=user.name %>"
+                                        <input type="text" class="form-control" id="name" value="<%=user.name %>"
                                             name="name">
                                     </div>
                                     <div class="form-group">
@@ -163,7 +163,7 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        $('#email').change(function () {
+        $('#email').blur(function () {
             var data = { email: $('#email').val() };
             console.log('calling');
             $.ajax({
