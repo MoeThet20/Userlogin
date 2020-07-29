@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from https://bootdey.com  -->
+    <!--  All snippets are MIT license https://bootdey.com/license -->
+    <title>User Profile</title>
+    <link rel="icon" href="../assets/img/brand/carparking.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/profile.css" type="text/css">
+</head>
+
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container bootstrap snippets">
+        <div class="row" id="user-profile">
+            <div class="col-lg-3 col-md-4 col-sm-4">
+                <div class="main-box clearfix">
+                    <h2><%= user.name%> </h2>
+                    <div class="profile-status">
+                        <i class="fa fa-check-circle"></i> Online
+                    </div>
+                    <div class="profile-status">
+                        <h2>RFID : <%= user.rfid %></h2>
+                    </div>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                        class="profile-img img-responsive center-block">
+                    <div class="profile-label">
+                        <a href="/user/logout">
+                            <button class="btn btn-info" type="button">Logout</button>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-8 col-sm-8">
+                <div class="main-box clearfix">
+                    <div class="profile-header">
+                        <h3><span>User info</span></h3>
+                    </div>
+                    <div class="row profile-user-info">
+                        <div class="col-sm-8">
+                            <div class="profile-user-details clearfix">
+                                <div class="profile-user-details-label">
+                                    Name
+                                </div>
+                                <div class="profile-user-details-value">
+                                    <%= user.name%>
+                                </div>
+                            </div>
+                            <div class="profile-user-details clearfix">
+                                <div class="profile-user-details-label">
+                                    Address
+                                </div>
+                                <div class="profile-user-details-value">
+                                    <%= user.address%>
+                                </div>
+                            </div>
+                            <div class="profile-user-details clearfix">
+                                <div class="profile-user-details-label">
+                                    Email
+                                </div>
+                                <div class="profile-user-details-value">
+                                    <%= user.email%>
+                                </div>
+                            </div>
+                            <div class="profile-user-details clearfix">
+                                <div class="profile-user-details-label">
+                                    Amount
+                                </div>
+                                <div class="profile-user-details-value">
+                                    <%= user.amount %>
+                                </div>
+                            </div>
+                            <div class="profile-user-details clearfix">
+                                <div class="profile-user-details-label">
+                                    NRC
+                                </div>
+                                <div class="profile-user-details-value">
+                                    <%= user.nrc%>
+                                </div>
+                            </div>
+                            <div class="profile-user-details clearfix">
+                                <div class="profile-user-details-label">
+                                    Phone number
+                                </div>
+                                <div class="profile-user-details-value">
+                                    <%= user.mobile %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Here-->
+                    <div class="tabs-wrapper profile-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab-activity" data-toggle="tab">History</a></li>
+                            <li><a href="#tab-edit" data-toggle="tab">Edit</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div class="tab-pane" id="tab-edit">
+                                <form action="/user/update" method="POST">
+                                    <input type="hidden" name="id" value="<%= user._id %>">
+                                    <div class="form-group">
+                                        <label for="name">Name:</label>
+                                        <input type="text" class="form-control" id="name" value=" <%=user.name %>"
+                                            name="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Address:</label>
+                                        <input type="text" class="form-control" id="address" name="address"
+                                            value=" <%=user.address %>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            value=" <%=user.email %>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nrc">NRC</label>
+                                        <input class="form-control" name="nrc" value="<%= user.nrc%>" type="text"
+                                            id="nrc">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile">Ph No:</label>
+                                        <input class="form-control" name="mobile" value="<%= user.mobile%>" type="text"
+                                            id="mobile">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade in active" id="tab-activity">
+
+                                <div class="table-responsive">
+                                    <%= user.retime%>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $('#email').blur(function () {
+            var data = { email: $('#email').val() };
+            console.log('calling');
+            $.ajax({
+                url: '/user/duemail', data: data, type: 'POST',
+                success: function (result) {
+                    if (result.status) {
+                        swal("Invalid", "Email is Already Exist", "error");
+                        $('#email').val(' <%= user.email%>');
+                    } else {
+                        console.log('Out')
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
